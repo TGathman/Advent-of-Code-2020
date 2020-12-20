@@ -1,21 +1,20 @@
-import re
-
 # Python 3.8, 19 December 2020
 
 # Advent of Code 2020, Day 2 - See Directions/Day 2 Directions.txt for background.
 
-data = []
+import re
 
-# Store input in a list.
-
-with open('Data Input\\Day 2 Input.txt', 'r') as file:
-    for line in file:
-        data.append(line.strip())
+data = [line.strip() for line in open('Data Input\\Day 2 Input.txt', 'r')]
 
 for index, item in enumerate(data):
     data[index] = re.split('-|: | ', item)
 
+# Part 1 - How many passwords are valid according to their policies?
+
 valid_passwords = 0
+
+# data now stores passwords as such [['2', '6', 'a', 'aaaaa']]: index 0 = min, index 1 = max, index 2 = letter,
+# index 3 = password.
 
 for password in data:
     if int(password[0]) <= password[3].count(password[2]) <= int(password[1]):
@@ -23,7 +22,11 @@ for password in data:
 
 print(valid_passwords)
 
+# Part 2 - How many passwords are valid according to the new interpretation of the policies?
+
 valid_passwords = 0
+
+# Converts indices, checks if target is in only one target index.
 
 for password_data in data:
 
