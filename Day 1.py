@@ -31,15 +31,12 @@ def three_sum(input_data: list, target: int) -> int:
                 return (target - target_value - value) * value * target_value
 
 
-data = []
+data = [int(line.strip()) for line in open('Data Input\\Day 1 Input.txt', 'r')]
 
-# Store input in a list.
-
-with open('Data Input\\Day 1 Input.txt', 'r') as file:
-    for line in file:
-        data.append(int(line.strip()))
-
-file.close()
+# Part 1 - Find the two entries that sum to 2020; what do you get if you multiply them together?
 
 print(two_sum(data, 2020))
+
+# Part 2 - In your expense report, what is the product of the three entries that sum to 2020?
+
 print(three_sum(data, 2020))
